@@ -5,7 +5,7 @@ import StyledWrapper from './styled';
 import Pagination from '../Pagination';
 
 const SearchResult = () => {
-  const { searchResult, pagination } = useContext(context);
+  const { searchData, searchResult, pagination } = useContext(context);
 
   return (
     <StyledWrapper>
@@ -15,7 +15,9 @@ const SearchResult = () => {
           <div className="row">
             <div className="col">
               <p>
-                {pagination.nowPage} of {'{type}'} "{'{title}'}" found in {'{Year}'}
+                {pagination.nowPage} of {searchData.type && `${searchData.type}`}{' '}
+                {searchData.title && `"${searchData.title}"`}
+                {searchData.year && ` found in ${searchData.year}`}
               </p>
             </div>
           </div>
