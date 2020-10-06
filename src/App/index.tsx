@@ -8,6 +8,7 @@ import PageFooter from '../components/layout/PageFooter';
 const App = () => {
   return (
     <StyledWrapper>
+      {/* Global Styles Component */}
       <StyledGlobal />
 
       <div>
