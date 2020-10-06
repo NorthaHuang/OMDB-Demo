@@ -9,28 +9,22 @@ import Error from '../../Error';
 const Main = () => {
   return (
     <StyledWrapper>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <Router>
-              <Switch>
-                <Route path="/result">
-                  <SearchResult />
-                </Route>
-                <Route path="/detail">
-                  <ItemDetail />
-                </Route>
-                <Route path="/error">
-                  <Error />
-                </Route>
-                <Route path="/">
-                  <Home />
-                </Route>
-              </Switch>
-            </Router>
-          </div>
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <Route path="/result">
+            <SearchResult />
+          </Route>
+          <Route path="/detail">
+            <ItemDetail />
+          </Route>
+          <Route path="/error">
+            <Error />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
     </StyledWrapper>
   );
 };
