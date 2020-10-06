@@ -4,7 +4,7 @@ import { IStates, IProviderProps, ISearchResult } from './types';
 const context = createContext({} as IStates);
 
 const Provider = ({ children }: IProviderProps): JSX.Element => {
-  const [title, setTitle] = useState<string>('');
+  const [title, setTitle] = useState<string>('bad');
   const [year, setYear] = useState<string>('');
   const [type, setType] = useState<string>('');
   const [searchResult, setSearchResult] = useState<ISearchResult>({} as ISearchResult);

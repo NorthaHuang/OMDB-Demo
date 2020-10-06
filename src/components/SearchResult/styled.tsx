@@ -10,14 +10,6 @@ const StyledWrapper = styled.div`
     }
   }
 
-  .list {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-  }
-
   .pagination {
     ul {
       display: flex;

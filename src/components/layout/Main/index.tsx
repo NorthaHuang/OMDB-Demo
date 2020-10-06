@@ -14,7 +14,7 @@ const Main = () => {
           <Route path="/result">
             <SearchResult />
           </Route>
-          <Route path="/detail">
+          <Route path="/detail/:id">
             <ItemDetail />
           </Route>
           <Route path="/error">
