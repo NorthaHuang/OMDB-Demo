@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import StyledWrapper from './styled';
 import context from '../../store/context';
 import axios from 'axios';
@@ -11,7 +12,11 @@ interface IParams {
 }
 
 const Home = () => {
-  const { title, setTitle, year, setYear, type, setType } = useContext(context);
+  const { title, setTitle, year, setYear, type, setType, setSearchResult } = useContext(
+    context
+  );
+
+  const history = useHistory();
 
   const sendRequist = () => {
     /** TODO: 撰寫驗證 */
@@ -30,7 +35,11 @@ const Home = () => {
       .get('', {
         params,
       })
-      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+        setSearchResult(result.data);
+        history.push('/result');
+      })
       .catch(err => console.log(err));
   };
 
