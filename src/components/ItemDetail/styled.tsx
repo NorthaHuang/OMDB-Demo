@@ -8,7 +8,8 @@ const StyledWrapper = styled.div`
 
     ul {
       margin-top: 0;
-      padding-left: 1rem;
+      padding-left: 2rem;
+      list-style: disc;
     }
   }
 `;

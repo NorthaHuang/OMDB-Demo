@@ -104,7 +104,7 @@ const ItemDetail = () => {
 
               <div className="Ratings">
                 <p>
-                  <b>Ratings</b>
+                  <b>Ratings:</b>
                 </p>
                 <ul>
                   {videoData.Ratings.map(rating => (
