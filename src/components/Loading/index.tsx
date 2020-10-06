@@ -4,7 +4,13 @@ import StyledWrapper from './styled';
 const Loading = () => {
   return (
     <StyledWrapper>
-      <p>Loading</p>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
     </StyledWrapper>
   );
 };
