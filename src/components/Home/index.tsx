@@ -4,17 +4,22 @@ import StyledWrapper from './styled';
 import context from '../../store/context';
 import axios from 'axios';
 import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
-import { IParams } from './types';
+import { ISearchParams } from '../../store/types';
 
 const Home = () => {
-  const { searchData, setSearchData, setSearchResult } = useContext(context);
+  const {
+    searchData,
+    setSearchData,
+    setSearchResult,
+    pagination,
+    setPagination,
+  } = useContext(context);
 
   const history = useHistory();
 
-  const sendRequist = () => {
+  const getResult = () => {
     /** TODO: 撰寫驗證 */
-
-    const params: IParams = { s: searchData.title };
+    const params: ISearchParams = { s: searchData.title };
 
     if (searchData.year !== '') {
       params.y = searchData.year;
@@ -30,7 +35,13 @@ const Home = () => {
       })
       .then(result => {
         console.log(result);
-        setSearchResult(result.data);
+        const data = result.data;
+        setSearchResult(data);
+        setPagination({
+          RESULT_PER_PAGE: 10,
+          totalPages: Math.ceil(+data.totalResults / pagination.RESULT_PER_PAGE),
+          nowPage: 1,
+        });
         history.push('/result');
       })
       .catch(err => console.log(err));
@@ -85,7 +96,7 @@ const Home = () => {
                 <option value="series">Series</option>
                 <option value="episode">Episode</option>
               </select>
-              <button type="button" onClick={sendRequist}>
+              <button type="button" onClick={getResult}>
                 <i className="fas fa-search"></i>
               </button>
             </form>

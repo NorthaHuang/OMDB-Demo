@@ -2,24 +2,25 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import context from '../../store/context';
 import StyledWrapper from './styled';
+import Pagination from '../Pagination';
 
 const SearchResult = () => {
-  const { searchResult } = useContext(context);
+  const { searchResult, pagination } = useContext(context);
 
   return (
     <StyledWrapper>
       {/* Search Result Metadata */}
-      <section className="meta">
+      <header className="meta">
         <div className="container">
           <div className="row">
             <div className="col">
               <p>
-                # of {'{type}'} "{'{title}'}" found in {'{Year}'}
+                {pagination.nowPage} of {'{type}'} "{'{title}'}" found in {'{Year}'}
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Result List */}
       <section className="list">
@@ -37,41 +38,7 @@ const SearchResult = () => {
         </div>
       </section>
 
-      {/* Pagination */}
-      <section className="pagination">
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <ul>
-                <li>
-                  <button>{'<<'}</button>
-                </li>
-                <li>
-                  <button>{'<'}</button>
-                </li>
-                <li>
-                  <button>1</button>
-                </li>
-                <li>
-                  <button>2</button>
-                </li>
-                <li>
-                  <button>3</button>
-                </li>
-                <li>
-                  <button>4</button>
-                </li>
-                <li>
-                  <button>{'>'}</button>
-                </li>
-                <li>
-                  <button>{'>>'}</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Pagination />
     </StyledWrapper>
   );
 };
