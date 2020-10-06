@@ -9,25 +9,24 @@ interface IParams {
   s: string;
   y?: string;
   type?: string;
+  page?: string;
 }
 
 const Home = () => {
-  const { title, setTitle, year, setYear, type, setType, setSearchResult } = useContext(
-    context
-  );
+  const { searchData, setSearchData, setSearchResult } = useContext(context);
 
   const history = useHistory();
 
   const sendRequist = () => {
     /** TODO: 撰寫驗證 */
 
-    const params: IParams = { s: title };
+    const params: IParams = { s: searchData.title };
 
-    if (year !== '') {
-      params.y = year;
+    if (searchData.year !== '') {
+      params.y = searchData.year;
     }
-    if (type !== '') {
-      params.type = type;
+    if (searchData.type !== '') {
+      params.type = searchData.type;
     }
 
     /** 錯誤處理 */
@@ -55,15 +54,36 @@ const Home = () => {
                 <span>Title</span>
                 <input
                   type="text"
-                  value={title}
-                  onChange={evt => setTitle(evt.target.value)}
+                  value={searchData.title}
+                  onChange={evt =>
+                    setSearchData({
+                      ...searchData,
+                      title: evt.target.value,
+                    })
+                  }
                 />
               </label>
               <label>
                 <span>Year</span>
-                <input type="number" onChange={evt => setYear(evt.target.value)} />
+                <input
+                  type="number"
+                  onChange={evt =>
+                    setSearchData({
+                      ...searchData,
+                      year: evt.target.value,
+                    })
+                  }
+                />
               </label>
-              <select value={type} onChange={evt => setType(evt.target.value)}>
+              <select
+                value={searchData.type}
+                onChange={evt =>
+                  setSearchData({
+                    ...searchData,
+                    type: evt.target.value,
+                  })
+                }
+              >
                 <option value="" disabled hidden>
                   Type
                 </option>

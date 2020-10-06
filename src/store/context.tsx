@@ -1,21 +1,19 @@
 import React, { useState, createContext } from 'react';
-import { IStates, IProviderProps, ISearchResult } from './types';
+import { IStates, IProviderProps, ISearchData, ISearchResult } from './types';
 
 const context = createContext({} as IStates);
 
 const Provider = ({ children }: IProviderProps): JSX.Element => {
-  const [title, setTitle] = useState<string>('bad');
-  const [year, setYear] = useState<string>('');
-  const [type, setType] = useState<string>('');
+  const [searchData, setSearchData] = useState<ISearchData>({
+    title: '',
+    year: '',
+    type: '',
+  });
   const [searchResult, setSearchResult] = useState<ISearchResult>({} as ISearchResult);
 
   const states = {
-    title,
-    setTitle,
-    year,
-    setYear,
-    type,
-    setType,
+    searchData,
+    setSearchData,
     searchResult,
     setSearchResult,
   };

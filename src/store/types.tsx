@@ -12,13 +12,16 @@ export interface ISearchResult {
   totalResults: string;
 }
 
-export interface IStates {
+export interface ISearchData {
   title: string;
-  setTitle: React.Dispatch<React.SetStateAction<string>>;
-  year: string;
-  setYear: React.Dispatch<React.SetStateAction<string>>;
-  type: string;
-  setType: React.Dispatch<React.SetStateAction<string>>;
+  year?: string;
+  type?: string;
+  page?: string;
+}
+
+export interface IStates {
+  searchData: ISearchData;
+  setSearchData: React.Dispatch<React.SetStateAction<ISearchData>>;
   searchResult: ISearchResult;
   setSearchResult: React.Dispatch<React.SetStateAction<ISearchResult>>;
 }
