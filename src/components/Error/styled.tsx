@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
-const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div`
+  text-align: center;
+`;
 
 export default StyledWrapper;
