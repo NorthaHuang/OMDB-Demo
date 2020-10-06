@@ -4,13 +4,7 @@ import StyledWrapper from './styled';
 import context from '../../store/context';
 import axios from 'axios';
 import '../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
-
-interface IParams {
-  s: string;
-  y?: string;
-  type?: string;
-  page?: string;
-}
+import { IParams } from './types';
 
 const Home = () => {
   const { searchData, setSearchData, setSearchResult } = useContext(context);

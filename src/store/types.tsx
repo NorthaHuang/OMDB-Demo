@@ -5,7 +5,6 @@ export interface ISearchResultList {
   Year: string;
   imdbID: string;
 }
-
 export interface ISearchResult {
   Response: string;
   Search: ISearchResultList[];
