@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import StyledWrapper from './styled';
 import StyledGlobal from '../styles/StyledGlobal';
 import PageHeader from '../components/layout/PageHeader';
@@ -11,10 +12,10 @@ const App = () => {
       {/* Global Styles Component */}
       <StyledGlobal />
 
-      <div>
+      <Router>
         <PageHeader />
         <Main />
-      </div>
+      </Router>
 
       <PageFooter />
     </StyledWrapper>
