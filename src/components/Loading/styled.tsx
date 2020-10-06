@@ -12,7 +12,9 @@ const StyledWrapper = styled.div`
   left: 0;
 
   p {
-    color: white;
+    color: #eee;
+    font-size: 60px;
+    text-align: center;
   }
 `;
 

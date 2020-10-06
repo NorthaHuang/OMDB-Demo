@@ -5,20 +5,31 @@ import axios from 'axios';
 import { ISearchParams } from '../../store/types';
 
 const countArray: number[] = [];
-for (let i = 0; i < 11; i++) {
+for (let i = 0; i < 5; i++) {
   countArray.push(i);
 }
 
 const Pagination = () => {
-  const { searchData, setSearchResult, pagination, setPagination } = useContext(context);
+  const {
+    setIsLoading,
+    searchData,
+    setSearchResult,
+    pagination,
+    setPagination,
+  } = useContext(context);
 
   const changePage = (targetPage: number) => {
-    /** TODO: 撰寫驗證 */
-    if (targetPage < 1) {
-      targetPage = 1;
-    } else if (targetPage > pagination.totalPages) {
-      targetPage = pagination.totalPages;
+    if (
+      targetPage < 1 ||
+      (pagination.nowPage === 1 && targetPage === 1) ||
+      targetPage > pagination.totalPages ||
+      (pagination.nowPage === pagination.totalPages &&
+        targetPage === pagination.totalPages)
+    ) {
+      return;
     }
+
+    setIsLoading(true);
 
     const params: ISearchParams = { s: searchData.title };
 
@@ -45,7 +56,8 @@ const Pagination = () => {
           nowPage: targetPage,
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log('Error: ', err))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -66,19 +78,21 @@ const Pagination = () => {
                 if (targetNum > pagination.totalPages) {
                   return null;
                 }
-                return num === 0 ? (
-                  <button
-                    style={{
-                      cursor: 'not-allowed',
-                      color: 'black',
-                      textDecoration: 'underline',
-                    }}
-                  >
-                    {targetNum}
-                  </button>
-                ) : (
+                return (
                   <li key={targetNum}>
-                    <button onClick={() => changePage(targetNum)}>{targetNum}</button>
+                    {num === 0 ? (
+                      <button
+                        style={{
+                          cursor: 'not-allowed',
+                          color: 'black',
+                          textDecoration: 'underline',
+                        }}
+                      >
+                        {targetNum}
+                      </button>
+                    ) : (
+                      <button onClick={() => changePage(targetNum)}>{targetNum}</button>
+                    )}
                   </li>
                 );
               })}

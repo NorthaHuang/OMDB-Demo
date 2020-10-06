@@ -1,19 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import StyledWrapper from './styled';
+import context from '../../store/context';
 import axios from 'axios';
 import { IUrlParams, IVideoData } from './types';
 
 const ItemDetail = () => {
   const [videoData, setVideoData] = useState<IVideoData>({} as IVideoData);
+  const { setIsLoading } = useContext(context);
 
+  const history = useHistory();
   const { id: VIDEO_ID } = useParams<IUrlParams>();
 
   useEffect(() => {
-    axios.get('', { params: { i: VIDEO_ID } }).then(result => {
-      console.log(result);
-      setVideoData(result.data);
-    });
+    setIsLoading(true);
+    axios
+      .get('', { params: { i: VIDEO_ID } })
+      .then(result => {
+        const data = result.data;
+        console.log(result);
+        if (data.Response === 'False') {
+          history.push('/error');
+          return;
+        }
+        setVideoData(data);
+      })
+      .catch(err => {
+        console.log(err);
+        history.push('/error');
+      })
+      .finally(() => setIsLoading(false));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -32,6 +48,9 @@ const ItemDetail = () => {
               </p>
               <p>
                 <b>Year:</b> {videoData.Year}
+              </p>
+              <p>
+                <b>Type:</b> {videoData.Type}
               </p>
               <p>
                 <b>Rated:</b> {videoData.Rated}
@@ -92,9 +111,6 @@ const ItemDetail = () => {
               </p>
               <p>
                 <b>imdbID:</b> {videoData.imdbID}
-              </p>
-              <p>
-                <b>Type:</b> {videoData.Type}
               </p>
               <p>
                 <b>DVD:</b> {videoData.DVD}

@@ -8,6 +8,7 @@ import { ISearchParams } from '../../store/types';
 
 const Home = () => {
   const {
+    setIsLoading,
     searchData,
     setSearchData,
     setSearchResult,
@@ -19,6 +20,8 @@ const Home = () => {
 
   const getResult = () => {
     /** TODO: 撰寫驗證 */
+
+    setIsLoading(true);
     const params: ISearchParams = { s: searchData.title };
 
     if (searchData.year !== '') {
@@ -36,6 +39,12 @@ const Home = () => {
       .then(result => {
         console.log(result);
         const data = result.data;
+
+        if (data.Response === 'False') {
+          history.push('/error');
+          return;
+        }
+
         setSearchResult(data);
         setPagination({
           RESULT_PER_PAGE: 10,
@@ -44,7 +53,11 @@ const Home = () => {
         });
         history.push('/result');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        history.push('/error');
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (

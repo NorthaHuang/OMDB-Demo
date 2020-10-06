@@ -32,6 +32,8 @@ export interface ISearchParams {
 }
 
 export interface IStates {
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   searchData: ISearchData;
   setSearchData: React.Dispatch<React.SetStateAction<ISearchData>>;
   searchResult: ISearchResult;
