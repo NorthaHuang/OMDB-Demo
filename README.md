@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SparkAmplify Coding Challenge
+
+## Initialization
+
+若剛下載完，請先於 Terminal/CMD 執行 `yarn install`
 
 ## Available Scripts
 
@@ -12,11 +16,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `yarn build`
 
 Builds the app for production to the `build` folder.<br />
@@ -25,20 +24,30 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## App Q&A
 
-### `yarn eject`
+#### **"How did you decide which technologies to use as part of your solution?"**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+我有幾個選取的參考條件:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. 熟悉程度；環境運許的話，就選擇有較多實戰經驗的技術。
+2. 源碼是否成熟穩定;選擇有經過多人使用及驗證，Issues 有使用者提報和處理問題的源碼。
+3. 作業時間長短;時間短就取最熟悉或易上手的，反之時間夠多的話，可以考慮選擇 "有使用過數次" 但沒有到特別熟的技術來使用。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### **"Are there any improvements you could make to your submission?"**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+還有好多地方可以加強，但最首要目標就是做出 "最小可行性產品 (Minimum Viable Product)"；
+目前大概有以下多點可以再更進步:
 
-## Learn More
+1. **style**: 排版細節增加、Loading 淡出淡入以及使用者互動的動態部分加入。
+2. **search-result list**: 圖片可以統一高度，並且設置底圖(因為蠻多 item 並沒有圖片)。
+3. **search-result pagination**: 希望可以讓當前頁面都處於正中間，如果頁面過多可以用 "..." 來表示。
+4. **search-result pagination**: 這個 component 可以改用 Props 傳遞資訊，使該 component 可以降低多一點的耦合度來增加複用性。
+5. **Homepage**: 的表單增加驗證機制以及紅字的錯誤提醒。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### **"What would you do differently if you were allocated more time?"**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 時間夠多的話我就會加入 ESLint (Airbnb) 來做 coding style 的自動驗證。
+2. 會花更多時間在寫註解上，不然可能下個月我自己本人回來看也會很吃力。
+3. Git-Flow 的每個 branch 和 commit 會更精確地去決定要寫什麼文字、在何時提交。
+4. 畫設計流程來大致計畫每一步該如何走。
