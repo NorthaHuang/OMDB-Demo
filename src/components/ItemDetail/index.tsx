@@ -36,7 +36,7 @@ const ItemDetail = () => {
 
   return (
     <StyledWrapper>
-      {videoData && videoData.Ratings && (
+      {videoData && (
         <div className="container">
           <div className="row">
             <div className="col-md-4">
@@ -86,19 +86,21 @@ const ItemDetail = () => {
                 <b>Awards:</b> {videoData.Awards}
               </p>
 
-              <div className="Ratings">
-                <p>
-                  <b>Ratings:</b>
-                </p>
-                <ul>
-                  {videoData.Ratings.map(rating => (
-                    <li key={rating.Source}>
-                      <b>{rating.Source}: </b>
-                      {rating.Value}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {videoData.Ratings && videoData.Ratings.length > 0 && (
+                <div className="Ratings">
+                  <p>
+                    <b>Ratings:</b>
+                  </p>
+                  <ul>
+                    {videoData.Ratings.map(rating => (
+                      <li key={rating.Source}>
+                        <b>{rating.Source}: </b>
+                        {rating.Value}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <p>
                 <b>Metascore:</b> {videoData.Metascore}
