@@ -12,7 +12,7 @@ const context = createContext({} as IStates);
 const Provider = ({ children }: IProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchData, setSearchData] = useState<ISearchData>({
-    title: 'bad',
+    title: '',
     year: '',
     type: '',
   });
