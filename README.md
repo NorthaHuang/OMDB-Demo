@@ -1,5 +1,7 @@
 # SparkAmplify Coding Challenge
 
+> [Live Demo Website (Netlify)](https://priceless-wescoff-0a86d2.netlify.app/)
+
 ## Initialization
 
 若剛下載完，請先於 Terminal/CMD 執行 `yarn install`
