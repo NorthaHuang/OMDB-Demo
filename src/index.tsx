@@ -5,7 +5,7 @@ import { Provider } from './store/context';
 import App from './App';
 
 /* API Default Setting */
-axios.defaults.baseURL = 'http://www.omdbapi.com/';
+axios.defaults.baseURL = '//www.omdbapi.com/';
 axios.defaults.params = {
   apikey: process.env.REACT_APP_OMDB_API_KEY,
 };
