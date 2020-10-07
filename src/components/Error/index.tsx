@@ -1,18 +1,23 @@
 import React from 'react';
 import StyledWrapper from './styled';
+import { IComponentProps } from './types';
 
-const Error = () => {
+const Error = ({ message }: IComponentProps) => {
   return (
     <StyledWrapper>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <h2>Oops, something went wrong...</h2>
-          </div>
-        </div>
-      </div>
+      <h2>Oops, something went wrong...</h2>
+
+      {message && (
+        <p>
+          Message: <span>{message}</span>
+        </p>
+      )}
     </StyledWrapper>
   );
+};
+
+Error.defaultProps = {
+  message: '',
 };
 
 export default Error;

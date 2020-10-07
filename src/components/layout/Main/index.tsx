@@ -1,30 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StyledWrapper from './styled';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from '../../Home';
-import SearchResult from '../../SearchResult';
-import ItemDetail from '../../ItemDetail';
+import { Switch, Route } from 'react-router-dom';
+import context from '../../../store/context';
+import routes from '../../../routes';
 import Error from '../../Error';
+import Loading from '../../Loading';
 
 const Main = () => {
+  const { isLoading } = useContext(context);
+
   return (
     <StyledWrapper>
-      <Router>
-        <Switch>
-          <Route path="/result">
-            <SearchResult />
-          </Route>
-          <Route path="/detail">
-            <ItemDetail />
-          </Route>
-          <Route path="/error">
-            <Error />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
+      <Switch>
+        {routes.map(({ name, path, component, exact }) => (
+          <Route key={name} exact={exact} path={path} component={component} />
+        ))}
+        <Route>
+          <Error message="404 PAGE NOT FOUND." />
+        </Route>
+      </Switch>
+
+      {isLoading && <Loading />}
     </StyledWrapper>
   );
 };
